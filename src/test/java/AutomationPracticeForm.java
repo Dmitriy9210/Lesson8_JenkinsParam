@@ -2,6 +2,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import com.github.javafaker.Faker;
 
 import java.io.File;
 
@@ -19,11 +20,13 @@ public class AutomationPracticeForm {
     @Test
     void fillFormTest() {
 
-        String name = "Dima";
-        String surname = "Ivanov";
-        String email = "dddd@mfff.ru";
-        String phone = "0123456789";
-        String address = "address";
+        Faker faker = new Faker();
+
+        String name = faker.name().firstName();
+        String surname = faker.name().lastName();
+        String email = faker.internet().emailAddress();
+        String phone = faker.phoneNumber().subscriberNumber(10);
+        String address = faker.address().fullAddress();
         String mounth = "June";
         String year = "1994";
         String date = "12";
@@ -44,7 +47,7 @@ public class AutomationPracticeForm {
         $("#react-select-2-option-1").click();
         $("label[for='hobbies-checkbox-1']").click();
         $("#uploadPicture").uploadFile(new File("./src/test/resources/file.jpg"));
-        $("#currentAddress").setValue("address");
+        $("#currentAddress").setValue(address);
         chooseDropDownList("Select State", "NCR");
         chooseDropDownList("Select City", "Delhi");
         $(byText("NCR")).click();
