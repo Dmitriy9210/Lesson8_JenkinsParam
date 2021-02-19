@@ -18,7 +18,7 @@ public class AutomationPracticeForm {
     }
 
     @Test
-    void fillFormTest() {
+    static void fillFormTest() {
 
         Faker faker = new Faker();
 
@@ -30,7 +30,16 @@ public class AutomationPracticeForm {
         String mounth = "June";
         String year = "1994";
         String date = "12";
+        String subjectValue = "English";
 
+        String selectorMounth = ".react-datepicker__month-select";
+        String selectorYear = ".react-datepicker__year-select";
+        String selectorDay = ".react-datepicker__week div";
+        String selectorState = "Select State";
+        String selectorCity = "Select City";
+
+        String choseState = "NCR";
+        String choseCity = "Delhi";
 
         open("https://demoqa.com/automation-practice-form");
         $("#firstName").val(name);
@@ -38,19 +47,20 @@ public class AutomationPracticeForm {
         $("#userEmail").val(email);
         $("#userNumber").val(phone);
         $("#currentAddress").val(address);
-        $("label[for='gender-radio-1']").click();
+        $(byText("Male")).click();
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOptionContainingText(mounth);
-        $(".react-datepicker__year-select").selectOptionContainingText(year);
-        $$(".react-datepicker__week div").findBy(text(date)).click();
-        $("#subjectsInput").setValue("en");
-        $("#react-select-2-option-1").click();
-        $("label[for='hobbies-checkbox-1']").click();
+        $(selectorMounth).selectOptionContainingText(mounth);
+        $(selectorYear).selectOptionContainingText(year);
+        $$(selectorDay).findBy(text(date)).click();
+        $("#subjectsInput").setValue(subjectValue).pressEnter();
+        $(byText("Sports")).click();
         $("#uploadPicture").uploadFile(new File("./src/test/resources/file.jpg"));
         $("#currentAddress").setValue(address);
-        chooseDropDownList("Select State", "NCR");
-        chooseDropDownList("Select City", "Delhi");
-        $(byText("NCR")).click();
+        $(byText(selectorState)).click();
+        $(byText(choseState)).click();
+        $(byText(selectorCity)).click();
+        $(byText(choseCity)).click();
+//        $(byText()).click();
         $("#react-select-3-option-2").click();
         $("#city").click();
         $("#react-select-4-option-1").click();
@@ -68,10 +78,5 @@ public class AutomationPracticeForm {
         elements.get(8).shouldHave(text(address));
         elements.get(9).shouldHave(text("Haryana Panipat"));
         $("#closeLargeModal").click();
-    }
-
-    void chooseDropDownList(String placeholderName, String chooseValue) {
-        $(byText(placeholderName)).click();
-        $(byText(chooseValue)).click();
     }
 }
