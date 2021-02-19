@@ -18,7 +18,7 @@ public class AutomationPracticeForm {
     }
 
     @Test
-    static void fillFormTest() {
+    void fillFormTest() {
 
         Faker faker = new Faker();
 
@@ -40,6 +40,7 @@ public class AutomationPracticeForm {
 
         String choseState = "NCR";
         String choseCity = "Delhi";
+        String sports = "Sports";
 
         open("https://demoqa.com/automation-practice-form");
         $("#firstName").val(name);
@@ -53,30 +54,26 @@ public class AutomationPracticeForm {
         $(selectorYear).selectOptionContainingText(year);
         $$(selectorDay).findBy(text(date)).click();
         $("#subjectsInput").setValue(subjectValue).pressEnter();
-        $(byText("Sports")).click();
+        $(byText(sports)).click();
         $("#uploadPicture").uploadFile(new File("./src/test/resources/file.jpg"));
         $("#currentAddress").setValue(address);
         $(byText(selectorState)).click();
         $(byText(choseState)).click();
         $(byText(selectorCity)).click();
         $(byText(choseCity)).click();
-//        $(byText()).click();
-        $("#react-select-3-option-2").click();
-        $("#city").click();
-        $("#react-select-4-option-1").click();
         $("#submit").submit();
 
         ElementsCollection elements = $$(".table tbody tr");
-        elements.get(0).shouldHave(text(name +" "+ surname));
+        elements.get(0).shouldHave(text(name + " " + surname));
         elements.get(1).shouldHave(text(email));
         elements.get(2).shouldHave(text("Male"));
         elements.get(3).shouldHave(text(phone));
-        elements.get(4).shouldHave(text(date +" "+ mounth +","+ year));
-        elements.get(5).shouldHave(text("Computer Science"));
-        elements.get(6).shouldHave(text("Sports"));
+        elements.get(4).shouldHave(text(date + " " + mounth + "," + year));
+        elements.get(5).shouldHave(text(subjectValue));
+        elements.get(6).shouldHave(text(sports));
         elements.get(7).shouldHave(text("file.jpg"));
         elements.get(8).shouldHave(text(address));
-        elements.get(9).shouldHave(text("Haryana Panipat"));
+        elements.get(9).shouldHave(text(String.format("%s %s", choseState, choseCity)));
         $("#closeLargeModal").click();
     }
 }
