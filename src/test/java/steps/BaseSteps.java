@@ -1,3 +1,5 @@
+package steps;
+
 import com.codeborne.selenide.ElementsCollection;
 import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
@@ -9,16 +11,16 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class BaseSteps {
-  private   Faker faker = new Faker();
+    private Faker faker = new Faker();
 
-    private  String name = faker.name().firstName();
-    private   String surname = faker.name().lastName();
-    private  String email = faker.internet().emailAddress();
-    private  String phone = faker.phoneNumber().subscriberNumber(10);
-    private  String address = faker.address().fullAddress();
-    private  String mounth = "June";
-    private  String year = "1994";
-    private  String date = "12";
+    private String name = faker.name().firstName();
+    private String surname = faker.name().lastName();
+    private String email = faker.internet().emailAddress();
+    private String phone = faker.phoneNumber().subscriberNumber(10);
+    private String address = faker.address().fullAddress();
+    private String mounth = "June";
+    private String year = "1994";
+    private String date = "12";
     private String subjectValue = "English";
 
     private String selectorMounth = ".react-datepicker__month-select";
@@ -27,9 +29,9 @@ public class BaseSteps {
     private String selectorState = "Select State";
     private String selectorCity = "Select City";
 
-    private  String choseState = "NCR";
-    private  String choseCity = "Delhi";
-    private  String sports = "Sports";
+    private String choseState = "NCR";
+    private String choseCity = "Delhi";
+    private String sports = "Sports";
 
     @Step("Open registration form")
     public void openPage() {
