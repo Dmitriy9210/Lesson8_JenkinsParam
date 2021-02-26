@@ -14,7 +14,7 @@ public class AutomationPracticeForm extends TestBase{
         steps.chooseHobbies();
         steps.uploadFile();
         steps.fillAddress();
-        steps.subbmitBtn();
+//        steps.subbmitBtn();
 
         steps.checkRegisterForm();
     }

@@ -6,6 +6,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
+import static helpers.AttachmentsHelpers.*;
 
 
 public class TestBase {
@@ -18,8 +19,8 @@ public class TestBase {
 //        if(System.getProperty("remote_driver") != null) {
             // config for Java + Selenide
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("enableVNC", true);
-            capabilities.setCapability("enableVideo", true);
+            capabilities.setCapability("enableVNC", true); //выполненение на фронте в селеноиде
+            capabilities.setCapability("enableVideo", true); //запись видео
             Configuration.browserCapabilities = capabilities;
             Configuration.remote = "https://user1:1234@selenoid.autotests.cloud:4444/wd/hub/";
 
@@ -40,11 +41,11 @@ public class TestBase {
 
     @AfterEach
     public void afterEach() {
-//        attachScreenshot("Last screenshot");
-//        attachPageSource();
-//        attachAsText("Browser console logs", getConsoleLogs());
+        attachScreenshot("Last screenshot");
+        attachPageSource();
+        attachAsText("Browser console logs", getConsoleLogs());
 //        if(System.getProperty("video_storage") != null)
-//            attachVideo();
+            attachVideo();
         closeWebDriver();
     }
 }
