@@ -86,7 +86,7 @@ public class BaseSteps {
 
     @Step("Click btn Subbmit")
     public void subbmitBtn() {
-//        $("#submit").submit();
+        $("#submit").submit();
     }
 
     @Step("Check register form")
