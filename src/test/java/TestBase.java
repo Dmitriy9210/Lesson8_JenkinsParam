@@ -22,7 +22,8 @@ public class TestBase {
             capabilities.setCapability("enableVNC", true); //выполненение на фронте в селеноиде
             capabilities.setCapability("enableVideo", true); //запись видео
             Configuration.browserCapabilities = capabilities;
-            Configuration.remote = "https://user1:1234@selenoid.autotests.cloud:4444/wd/hub/";
+            Configuration.remote = System.getProperty("remote_driver");
+//            Configuration.remote = "https://user1:1234@selenoid.autotests.cloud:4444/wd/hub/"; прямая ссылка
 
             // config for Java + Selenium
 //        DesiredCapabilities capabilities = new DesiredCapabilities();
