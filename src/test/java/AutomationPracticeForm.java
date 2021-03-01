@@ -2,9 +2,10 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import steps.BaseSteps;
 
-public class AutomationPracticeForm extends TestBase{
+public class AutomationPracticeForm extends TestBase {
 
     @Test
+    @Tag("positive")
     void fillFormTest() {
         BaseSteps steps = new BaseSteps();
         steps.openPage();
